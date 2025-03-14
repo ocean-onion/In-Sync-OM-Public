@@ -1,0 +1,7 @@
+version = 1
+requires-python = ">=3.11"
+
+[[package]]
+name = "in-sync-public"
+version = "0.3.1"
+source = { editable = "." }

@@ -1,0 +1,21 @@
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "In_Sync_Public"
+version = "0.3.1"
+description = "A cooperative card game where players attempt to play cards in ascending order without communicating."
+authors = [
+    {name = "Ocean Man (ocean-onion)"}
+]
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools]
+packages = ["games", "utils"]
