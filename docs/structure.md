@@ -11,12 +11,10 @@ InSync/
 │
 ├── games/                   # Game implementations
 │   ├── plaingame.py         # Plain text version
-│   ├── styledgame.py        # Styled version with colors
-│   └── testfunc.py          # Testing functions
+│   └── styledgame.py        # Styled version with colors
 │
 │
 ├── utils/                   # Utility functions
-│   ├── tools.py             # Developer commands
 │   └── utilities.py         # Shared utility functions
 │
 │
@@ -31,7 +29,3 @@ InSync/
 - **games/plaingame.py**: Implementation with plain text (no styling)
 - **games/styledgame.py**: Implementation with styled text (colors and effects)
 - **utils/utilities.py**: Shared utility functions used by both implementations
-- **utils/tools.py**: Developer commands for testing and debugging
-- **games/testfunc.py**: Testing utilities for individual functions
-
-## [WIKI](https://github.com/ocean-onion/In-Sync-OM-Public/wiki)

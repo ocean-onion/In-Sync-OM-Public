@@ -1,4 +1,5 @@
 import time, sys, os, re
+import typing
 
 
 class color:
@@ -66,9 +67,12 @@ def colourprint(text):
     print()
 
 
-def colourinput(text):
+def typingprint_nl(text):
     text = apply_colors(text)
-    return input(text)
+    for character in text:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.05)
 
 
 def typinginput(text):
@@ -79,6 +83,9 @@ def typinginput(text):
         time.sleep(0.05)
     return input()
 
+def colourinput(text):
+    text = apply_colors(text)
+    return input(text)
 
 def typingintructions(text):
     text = apply_colors(text)

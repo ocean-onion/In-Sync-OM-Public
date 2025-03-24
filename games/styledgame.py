@@ -1,6 +1,5 @@
 import random
-from utils.utilities import colourprint, typingprint, typinginput, cards, clear, wait, instructions, color, countdown, colourinput
-from utils.tools import execute_dev_command
+from utils.utilities import colourprint, typingprint, typinginput, cards, clear, wait, instructions, color, countdown, colourinput, typingprint_nl
 
 RED = color.RED
 GREEN = color.GREEN
@@ -118,11 +117,6 @@ def get_valid_player(players, played_cards=None):
     wait(0.5)
     chosen_player = colourinput("{PURPLE}Enter your name: {END}")
 
-    if chosen_player.startswith("!?"):
-        command = chosen_player[2:]
-        execute_dev_command(command, players,
-                            played_cards if played_cards else [])
-        return get_valid_player(players, played_cards)
 
     player_found = False
     for player in players:
@@ -141,10 +135,6 @@ def get_valid_card(player, played_cards=None):
     wait(0.5)
     chosen_card_input = colourinput("{CYAN}Choose a card to play: {END}")
 
-    if chosen_card_input.startswith("!?"):
-        command = chosen_card_input[2:]
-        execute_dev_command(command, [], played_cards if played_cards else [])
-        return get_valid_card(player, played_cards)
 
     if not chosen_card_input.isdigit():
         typingprint("{RED}{BOLD}Please enter a valid card number!{END}")
@@ -211,12 +201,12 @@ def game_loop(players):
             )
             cards_display = ", ".join(
                 [f"{YELLOW}{card}{END}" for card in played_cards])
-            typingprint(f"{CYAN}Cards played in order:{END} {cards_display}")
+            typingprint_nl(f"{CYAN}Cards played in order:{END} ") 
+            colourprint(f"{cards_display}")
             break
 
         result = play_turn(players, played_cards, previous_card)
         if result is None:
-            # Game over due to an error
             return
         previous_card = result
 
@@ -232,7 +222,7 @@ def restart_game():
 
 def styled_start_game():
     clear()
-    typingprint(f"{YELLOW}{BOLD}Welcome to In Sync{END}")
+    typingprint(f"{YELLOW}{BOLD}Welcome to In-Sync{END}")
     typingprint(
         f"{CYAN}A cooperative card game where timing is everything!{END}")
     int_ask = typinginput(

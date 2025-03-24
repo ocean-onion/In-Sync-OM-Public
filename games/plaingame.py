@@ -1,6 +1,5 @@
 import random
 from utils.utilities import cards, plain_instructions, clear
-from utils.tools import execute_dev_command
 
 
 def prepare_game_deck(num_players):
@@ -97,11 +96,6 @@ def play_card(player, card):
 def get_valid_player(players, played_cards=None):
     chosen_player = input("Enter your name: ")
 
-    if chosen_player.startswith("!?"):
-        command = chosen_player[2:]
-        execute_dev_command(command, players,
-                            played_cards if played_cards else [])
-        return get_valid_player(players, played_cards)
 
     player_found = False
     for player in players:
@@ -117,10 +111,6 @@ def get_valid_player(players, played_cards=None):
 def get_valid_card(player, played_cards=None):
     chosen_card_input = input("Choose a card to play: ")
 
-    if chosen_card_input.startswith("!?"):
-        command = chosen_card_input[2:]
-        execute_dev_command(command, [], played_cards if played_cards else [])
-        return get_valid_card(player, played_cards)
 
     if not chosen_card_input.isdigit():
         print("Please enter a valid card number!")

@@ -48,4 +48,3 @@ python3 -m main
 You can choose between:
 - **S**: Styled game with colors
 - **P**: Plain text game
-- **T**: Test functions
