@@ -1,5 +1,4 @@
 import time, sys, os, re
-import typing
 
 
 class color:

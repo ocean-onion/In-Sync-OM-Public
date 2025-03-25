@@ -43,7 +43,7 @@ def create_players(num_players):
             typingprint("{RED}Name cannot be empty. Please try again.{END}")
         typingprint(f"{GREEN}Welcome to the game, {name}!{END}")
         players.append({"name": name, "deck": []})
-        wait(0.5)
+        wait(0.3)
     return players
 
 
@@ -114,7 +114,7 @@ def play_card(player, card):
 
 
 def get_valid_player(players, played_cards=None):
-    wait(0.5)
+    wait(0.3)
     chosen_player = colourinput("{PURPLE}Enter your name: {END}")
 
 
@@ -132,7 +132,7 @@ def get_valid_player(players, played_cards=None):
 
 
 def get_valid_card(player, played_cards=None):
-    wait(0.5)
+    wait(0.3)
     chosen_card_input = colourinput("{CYAN}Choose a card to play: {END}")
 
 
