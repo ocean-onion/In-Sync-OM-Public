@@ -11,7 +11,7 @@ InSync/
 │
 ├── games/                   # Game implementations
 │   ├── plaingame.py         # Plain text version
-│   └── styledgame.py        # Styled version with colors
+│   └── styledgame.py        # Styled version with colours
 │
 │
 ├── utils/                   # Utility functions
@@ -27,5 +27,5 @@ InSync/
 
 - **main.py**: Entry point for the application allowing choice between styled and plain versions
 - **games/plaingame.py**: Implementation with plain text (no styling)
-- **games/styledgame.py**: Implementation with styled text (colors and effects)
+- **games/styledgame.py**: Implementation with styled text (colours and effects)
 - **utils/utilities.py**: Shared utility functions used by both implementations

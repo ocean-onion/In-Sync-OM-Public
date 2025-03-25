@@ -15,7 +15,7 @@ In Sync is a cooperative card game where players must work together to play card
 
 ## Features
 
-- Multiple game styles (Plain and Styled with colors)
+- Multiple game styles (Plain and Styled with colours)
 - Real-time gameplay (any player can play at any time)
 - Privacy mechanisms for viewing cards
 - Card history tracking

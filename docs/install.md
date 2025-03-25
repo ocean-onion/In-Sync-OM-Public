@@ -46,5 +46,5 @@ python3 -m main
 ```
 
 You can choose between:
-- **S**: Styled game with colors
+- **S**: Styled game with colours
 - **P**: Plain text game
