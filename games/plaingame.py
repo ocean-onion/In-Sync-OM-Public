@@ -111,7 +111,6 @@ def get_valid_player(players, played_cards=None):
 def get_valid_card(player, played_cards=None):
     chosen_card_input = input("Choose a card to play: ")
 
-
     if not chosen_card_input.isdigit():
         print("Please enter a valid card number!")
         return get_valid_card(player, played_cards)
@@ -186,12 +185,18 @@ def restart_game():
 
 def plain_start_game():
     clear()
-    print("Welcome to In Sync")
+    print("Welcome to In-Sync")
     print("A cooperative card game where timing is everything!")
     int_ask = input("Would you like the instructions? (y/n): ").lower()
 
     if int_ask == "y":
         plain_instructions()
+        clear()
+    elif int_ask == "n":
+        clear()
+    else:
+        print("Invalid input!")
+        return plain_start_game()
 
     clear()
     print("Okay, let's start the game!")

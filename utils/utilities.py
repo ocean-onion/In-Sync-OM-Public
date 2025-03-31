@@ -1,4 +1,5 @@
 import time, sys, os, re
+import typing
 
 
 class color:
@@ -58,14 +59,6 @@ def typingprint(text):
         sys.stdout.flush()
         time.sleep(0.05)
     print()
-
-
-def colourprint(text):
-    text = apply_colors(text)
-    print(text)
-    print()
-
-
 def typingprint_nl(text):
     text = apply_colors(text)
     for character in text:
@@ -73,6 +66,14 @@ def typingprint_nl(text):
         sys.stdout.flush()
         time.sleep(0.05)
 
+def colourprint(text):
+    text = apply_colors(text)
+    print(text)
+    print()
+
+def colourprint_nl(text):
+    text = apply_colors(text)
+    print(text)
 
 def typinginput(text):
     text = apply_colors(text)
@@ -329,3 +330,37 @@ def plain_instructions():
     print("- If unsure, wait a moment before playing a card.")
     input("\nPress Enter to continue...")
     return
+
+
+
+def loading_screen():
+    for i in range(1, 4):
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Game{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Game.{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Game..{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Game...{color.END}")
+        wait(0.5)
+        clear()
+
+def shuffle_screen():
+    for i in range(1, 4):
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Shuffling Cards{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Shuffling Cards.{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Shuffling Cards..{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Shuffling Cards...{color.END}")
+        wait(0.5)
+        clear()
