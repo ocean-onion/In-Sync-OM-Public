@@ -30,4 +30,4 @@ InSync/
 - **games/plaingame.py**: Implementation with plain text (no styling)
 - **games/styledgame.py**: Implementation with styled text (colours and effects)
 - **utils/utilities.py**: Shared utility functions used by both implementations
-- - **utils/logo.py**: Prints out ocean-onion logo
+- **utils/logo.py**: Prints out ocean-onion logo
