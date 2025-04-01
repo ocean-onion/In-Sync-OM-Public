@@ -1,7 +1,7 @@
 
 # In Sync Game
 
-### 0.3.4
+### 0.4.0
 ---
 
 A cooperative card game where players attempt to play cards in ascending order without communicating.

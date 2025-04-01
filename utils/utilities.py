@@ -1,32 +1,45 @@
 import time, sys, os, re
-import typing
 
 
 class color:
-    PURPLE = '\033[95m'
-    CYAN = '\033[96m'
-    DARKCYAN = '\033[36m'
-    BLUE = '\033[94m'
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    RED = '\033[91m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-    END = '\033[0m'
+    # Colours
+    BLUE = '\033[94m'        
+    CYAN = '\033[96m'        
+    GREEN = '\033[92m'       
+    PURPLE = '\033[95m'      
+    RED = '\033[91m'        
+    YELLOW = '\033[93m'     
+
+    # Dark Colours
+    DARKBLUE = "\033[38;5;27m"  
+    DARKCYAN = '\033[36m'        
+    DARKPURPLE = "\033[38;5;54m" 
+
+    # Accents
+    BOLD = '\033[1m'            
+    UNDERLINE = '\033[4m'        
+    END = '\033[0m'             
 
 
 _color_patterns = {}
 _color_dict = {
-    'RED': color.RED,
-    'GREEN': color.GREEN,
-    'YELLOW': color.YELLOW,
+    # Colours
     'BLUE': color.BLUE,
     'CYAN': color.CYAN,
+    'GREEN': color.GREEN,
     'PURPLE': color.PURPLE,
+    'RED': color.RED,
+    'YELLOW': color.YELLOW,
+
+    # Dark Colours
+    'DARKBLUE': color.DARKBLUE,
     'DARKCYAN': color.DARKCYAN,
-    'BOLD': color.BOLD,
-    'UNDERLINE': color.UNDERLINE,
-    'END': color.END
+    'DARKPURPLE': color.DARKPURPLE,
+
+    # Accents
+    'BOLD': color.BOLD,          
+    'UNDERLINE': color.UNDERLINE, 
+    'END': color.END,
 }
 
 
@@ -364,3 +377,20 @@ def shuffle_screen():
         colourprint_nl(f"{color.BLUE}{color.BOLD}Shuffling Cards...{color.END}")
         wait(0.5)
         clear()
+
+def loading_files_screen():
+    for i in range(1, 4):
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Files{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Files.{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Files..{color.END}")
+        wait(0.5)
+        clear()
+        colourprint_nl(f"{color.BLUE}{color.BOLD}Loading Files...{color.END}")
+        wait(0.5)
+        clear()
+
