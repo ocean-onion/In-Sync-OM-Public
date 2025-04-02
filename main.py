@@ -1,7 +1,7 @@
 from games.plaingame import plain_start_game
-from games.styledgame import BLUE, BOLD, CYAN, DARKCYAN, END, GREEN, PURPLE, RED, YELLOW, styled_start_game
-from utils.utilities import clear, colourprint, colourprint_nl, loading_screen, typinginput, typingprint, wait, loading_files_screen
+from games.styledgame import BLUE, BOLD, DARKCYAN, END, GREEN, PURPLE, RED, YELLOW, styled_start_game
 from utils.logo import display_logo
+from utils.utilities import clear, colourprint, colourprint_nl, loading_screen, typinginput, typingprint, wait, loading_files_screen
 
 
 def welcome():
@@ -52,9 +52,9 @@ def welcome():
 
 
 def start_game():
-
+    clear()
     colourprint(
-        f"The options are {PURPLE}'{BOLD}S{END}{PURPLE}' for styled game{END} {GREEN}(Recommended){END}, {BLUE}'{BOLD}P{END}{BLUE}' for plain game,{END} or {YELLOW}'{BOLD}T{END}{YELLOW}'."
+        f"The options are {PURPLE}'{BOLD}S{END}{PURPLE}' for styled game{END} {GREEN}(Recommended){END}, {BLUE}'{BOLD}P{END}{BLUE}' for plain game,{END} {RED}(Maybe outdated){END} or {YELLOW}'{BOLD}T{END}{YELLOW}' for test functions{END} {RED}(Boring unless dev){END}."
     )
     game_choose = typinginput(
         f"{BOLD}{BLUE}Choose a game: {END}").lower().strip().replace(" ", "")
@@ -81,12 +81,12 @@ def introduction():
 
 
 def hello():
-    print("Hello, would you like to skip the introduction? (y/n)")
+    print("Hello, would you like the introduction (y/n)")
     skip_intro = input().lower()
     if skip_intro == 'y':
-        start_game()
-    elif skip_intro == 'n':
         introduction()
+    elif skip_intro == 'n':
+        start_game()
     else:
         print("Invalid input. Please enter 'y' or 'n'.")
         hello()

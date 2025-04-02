@@ -1,5 +1,5 @@
 import random
-from utils.utilities import cards, plain_instructions, clear
+from utils.utilities import cards, plain_instructions, clear, wait
 
 
 def prepare_game_deck(num_players):
@@ -8,9 +8,6 @@ def prepare_game_deck(num_players):
     available_cards = total_cards - cards_to_remove
 
     cards_per_player = max(1, available_cards // num_players)
-
-    print(f"Each player will get {cards_per_player} cards.")
-
     deck = cards.copy()
     random.shuffle(deck)
 
@@ -53,6 +50,18 @@ def show_cards(player):
     clear()
     print(f"{player['name']}, I will show your cards in 5 seconds.")
     print("Make sure all other players are looking away!")
+    clear()
+    print("5")
+    wait(1)
+    print("4")
+    wait(1)
+    print("3")
+    wait(1)
+    print("2")
+    wait(1)
+    print("1")
+    wait(1)
+    clear()
 
     print(
         f"{player['name']}, Please view your cards. It may be useful to write them down on some paper."
@@ -96,7 +105,6 @@ def play_card(player, card):
 def get_valid_player(players, played_cards=None):
     chosen_player = input("Enter your name: ")
 
-
     player_found = False
     for player in players:
         if player["name"].lower() == chosen_player.lower():
@@ -110,6 +118,7 @@ def get_valid_player(players, played_cards=None):
 
 def get_valid_card(player, played_cards=None):
     chosen_card_input = input("Choose a card to play: ")
+
 
     if not chosen_card_input.isdigit():
         print("Please enter a valid card number!")
@@ -149,13 +158,22 @@ def play_turn(players, played_cards, previous_card):
         correct_player = find_correct_player(players, lowest_card)
 
         print(
-            f"Wrong move! {players['name']} played an incorrect card. Game over."
+            f"Wrong move! {player['name']} played an incorrect card. Game over."
         )
-        print(
-            f"The correct card to play was {lowest_card}, and it should have been played by {correct_player}."
-        )
-        print(f"Cards played in order before the error: {played_cards}")
-        return None
+        if played_cards is not None:
+            print(
+                f"The correct card to play was {lowest_card}, and it should have been played by {correct_player}."
+            )
+            print(f"Cards played in order before the error: {played_cards}")
+            return None
+        elif played_cards is None:
+            print(
+                f"The correct card to play was {lowest_card}, and it should have been played by {correct_player}."
+            )
+            print("You lost on the first card. ˙◠˙")
+            return None
+        else:
+            print("Something has gone very wrong!")
 
 
 def game_loop(players):
@@ -170,7 +188,6 @@ def game_loop(players):
 
         result = play_turn(players, played_cards, previous_card)
         if result is None:
-            # Game over due to an error
             return
         previous_card = result
 
@@ -185,8 +202,8 @@ def restart_game():
 
 def plain_start_game():
     clear()
-    print("Welcome to In-Sync")
-    print("A cooperative card game where timing is everything!")
+    print("Welcome to the game!")
+    print("In-Sync is a cooperative card game where timing is everything!")
     int_ask = input("Would you like the instructions? (y/n): ").lower()
 
     if int_ask == "y":
@@ -204,6 +221,8 @@ def plain_start_game():
     while True:
         num_players_input = input(
             "Enter the number of players (between 2 and 4): ")
+        clear()
+
         if not num_players_input.isdigit() or not (2 <= int(num_players_input)
                                                    <= 4):
             print(

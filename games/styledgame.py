@@ -1,22 +1,15 @@
-
 import random
 from utils.utilities import colourprint, colourprint_nl, typingprint, typinginput, cards, clear, wait, instructions, color, countdown, colourinput, typingprint_nl, shuffle_screen
 
-# Makes the colours more acessable and easier to use.
-# Colours
 BLUE = color.BLUE
 CYAN = color.CYAN
 GREEN = color.GREEN
 PURPLE = color.PURPLE
 RED = color.RED
 YELLOW = color.YELLOW
-
-# Dark Colours
 DARKBLUE = color.DARKBLUE
 DARKCYAN = color.DARKCYAN
 DARKPURPLE = color.DARKPURPLE
-
-# Accents
 BOLD = color.BOLD
 UNDERLINE = color.UNDERLINE
 END = color.END
@@ -43,16 +36,20 @@ def prepare_game_deck(num_players):
 def create_players(num_players):
     players = []
     typingprint(f"{DARKBLUE}Let's get to know the players!{END}")
+    wait(0.8)
     for i in range(num_players):
         while True:
+            wait(0.8)
+            clear()
             name = typinginput(
                 f"{BLUE}Enter the name of Player {i + 1}: {END}")
             if name.strip():
                 break
             typingprint(f"{RED}Name cannot be empty. Please try again.{END}")
+        clear()
         typingprint(f"{GREEN}Welcome to the game, {name}!{END}")
         players.append({"name": name, "deck": []})
-        wait(0.3)
+        wait(0.8)
     return players
 
 
@@ -62,7 +59,7 @@ def deal_cards(game_deck, players, cards_per_player):
         f"{CYAN}Now we have all {len(players)} players. Lets deal the cards.{END}"
     )
     clear()
-    shuffle_screen()            
+    shuffle_screen()
     for i in range(cards_per_player):
         for player in players:
             if game_deck:
@@ -101,8 +98,10 @@ def check_user_deck(player, card):
     clear()
     return False
 
+
 def get_all_remaining_cards(players):
     return [card for player in players for card in player["deck"]]
+
 
 def check_lowest_possible(players, played_card):
     remaining_cards = get_all_remaining_cards(players)
@@ -127,8 +126,6 @@ def play_card(player, card):
 def get_valid_player(players, played_cards=None):
     wait(0.3)
     chosen_player = colourinput(f"{DARKBLUE}Enter your name: {END}")
-
-
     player_found = False
     for player in players:
         if player["name"].lower() == chosen_player.lower():
@@ -145,7 +142,6 @@ def get_valid_player(players, played_cards=None):
 def get_valid_card(player, played_cards=None):
     wait(0.3)
     chosen_card_input = colourinput(f"{CYAN}Choose a card to play: {END}")
-
 
     if not chosen_card_input.isdigit():
         typingprint(f"{RED}{BOLD}Please enter a valid card number!{END}")
@@ -166,13 +162,13 @@ def play_turn(players, played_cards, previous_card):
         colourprint_nl(
             f"{BLUE}Previous card played was:{END} {YELLOW}{previous_card}{END}"
         )
-        colourprint(f"{BLUE}{UNDERLINE}Anyone can play a card at any time.{END}")
+        colourprint(
+            f"{BLUE}{UNDERLINE}Anyone can play a card at any time.{END}")
     else:
         wait(0.8)
         typingprint(f"{YELLOW}{BOLD}No cards have been played yet.{END}")
-        typingprint(f"{BLUE}{UNDERLINE}Anyone can play a card at any time.{END}")
-
-
+        typingprint(
+            f"{BLUE}{UNDERLINE}Anyone can play a card at any time.{END}")
 
     player = get_valid_player(players, played_cards)
     chosen_card = get_valid_card(player, played_cards)
@@ -194,32 +190,44 @@ def play_turn(players, played_cards, previous_card):
         lowest_card = min(remaining_cards)
         correct_player = find_correct_player(players, lowest_card)
 
+        wait(1)
+        typingprint(f"{DARKBLUE}UH OH!{END}")
+        wait(0.5)
+        clear()
         colourprint(
             f"{RED}{BOLD}Wrong move! {player['name']} played an incorrect card. Game over.{END}"
         )
-        typingprint(
-            f"{YELLOW}The correct card to play was {BOLD}{lowest_card}{END}{YELLOW}, and it should have been played by {BOLD}{correct_player}{END}{YELLOW}.{END}"
-        )
-        cards_corretly_played = ", " .join([f'{YELLOW}{card}{END}' for card in played_cards])
-        typingprint_nl(
-            f"{DARKBLUE}Cards played in order before the error:{END} "
-        )
-        colourprint(f"{cards_corretly_played}")
-        return None
+        if played_cards is not None:
+            typingprint(
+                f"{YELLOW}The correct card to play was {BOLD}{lowest_card}{END}{YELLOW}, and it should have been played by {BOLD}{correct_player}{END}{YELLOW}.{END}"
+            )
+            cards_corretly_played = ", ".join(
+                [f'{DARKCYAN}{card}{END}' for card in played_cards])
+            typingprint_nl(
+                f"{DARKBLUE}Cards played in order before the error:{END} ")
+            colourprint(f"{cards_corretly_played}")
+            return None
+        elif played_cards is None:
+            typingprint(
+                f"{DARKCYAN}The correct card to play was {BOLD}{lowest_card}{END}{YELLOW}, and it should have been played by {BOLD}{correct_player}{END}{YELLOW}.{END}"
+            )
+            typingprint(f"{DARKBLUE}You lost on the first card. ˙◠˙{END}")
+            return None
+        else:
+            colourprint(f"{PURPLE}Something has gone very wrong!{END}")
 
 
 def game_loop(players):
     previous_card = None
     played_cards = []
-
     while True:
         if all(len(player["deck"]) == 0 for player in players):
             typingprint(
                 f"{GREEN}{BOLD}Congratulations! You've successfully completed the game!{END}"
             )
             cards_display = ", ".join(
-                [f"{YELLOW}{card}{END}" for card in played_cards])
-            typingprint_nl(f"{CYAN}Cards played in order:{END} ") 
+                [f"{DARKCYAN}{card}{END}" for card in played_cards])
+            typingprint_nl(f"{DARKBLUE}Cards played in order:{END} ")
             colourprint(f"{cards_display}")
             break
 
@@ -242,7 +250,8 @@ def styled_start_game():
     clear()
     typingprint(f"{YELLOW}{BOLD}Welcome to the game{END}")
     typingprint(
-        f"{CYAN}In-Sync is a cooperative card game where timing is everything!{END}")
+        f"{CYAN}In-Sync is a cooperative card game where timing is everything!{END}"
+    )
     int_ask = typinginput(
         f"{DARKBLUE}Would you like the instructions? (y/n): {END}").lower()
 
@@ -261,6 +270,7 @@ def styled_start_game():
     while True:
         num_players_input = typinginput(
             f"{BLUE}Enter the number of players (between 2 and 4): {END}")
+        clear()
 
         if not num_players_input.isdigit() or not (2 <= int(num_players_input)
                                                    <= 4):
