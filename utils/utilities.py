@@ -1,4 +1,6 @@
-import time, sys, os, re
+import time
+import sys
+import os
 
 
 class color:
@@ -72,6 +74,7 @@ def typingprint(text):
         sys.stdout.flush()
         time.sleep(0.05)
     print()
+
 def typingprint_nl(text):
     text = apply_colors(text)
     for character in text:
@@ -299,28 +302,28 @@ def countdown(seconds):
 def instructions():
     wait(0.05)
     clear()
-    typingprint(f"{color.BLUE}{color.BOLD}Game Instructions:")
+    typingprint(f"{color.DARKBLUE}{color.BOLD}Game Instructions:")
     typingintructions(
-        f"{color.BLUE} 1. {color.END}{color.PURPLE}Each player receives a set of numbered cards.{color.END}"
+        f"{color.BLUE} 1. {color.END}{color.CYAN}Each player receives a set of randomly numbered cards.{color.END}"
     )
     typingintructions(
-        f"{color.BLUE} 2. {color.END}{color.PURPLE}The goal is to play the cards in ascending order without speaking."
+        f"{color.BLUE} 2. {color.END}{color.CYAN}The goal is to play the cards in ascending order without speaking."
     )
     typingintructions(
-        f"{color.BLUE} 3. {color.END}{color.PURPLE}Players must rely on intuition and teamwork to decide when to play.{color.END}"
+        f"{color.BLUE} 3. {color.END}{color.CYAN}Players must rely on intuition and teamwork to decide when to play.{color.END}"
     )
     typingintructions(
-        f"{color.BLUE} 4. {color.END}{color.PURPLE}If a player plays a card out of order, the game ends.{color.END}"
+        f"{color.BLUE} 4. {color.END}{color.CYAN}If a player plays a card out of order, the game ends.{color.END}"
     )
     typingintructions(
-        f"{color.BLUE} 5. {color.END}{color.PURPLE}If all cards are played in the correct order, you win!{color.END}"
+        f"{color.BLUE} 5. {color.END}{color.CYAN}If all cards are played in the correct order, you win!{color.END}"
     )
-    typingprint(f"{color.BLUE}{color.BOLD}\n Tips:{color.END}")
+    typingprint(f"{color.DARKBLUE}{color.BOLD}\n Tips:{color.END}")
     typingintructions(
-        f"{color.BLUE}  - {color.END}{color.PURPLE}{color.UNDERLINE}Stay focused and try to sense the right timing.{color.END}"
+        f"{color.BLUE}  - {color.END}{color.CYAN}{color.UNDERLINE}Stay focused and try to sense the right timing.{color.END}"
     )
     typingintructions(
-        f"{color.BLUE}  - {color.END}{color.PURPLE}{color.UNDERLINE}If unsure, wait a moment before playing a card.{color.END}"
+        f"{color.BLUE}  - {color.END}{color.CYAN}{color.UNDERLINE}If unsure, wait a moment before playing a card.{color.END}"
     )
     typinginput(f"{color.BLUE}\nPress Enter to continue...{color.END}")
     clear()
@@ -329,7 +332,7 @@ def instructions():
 
 def plain_instructions():
     print("Game Instructions:")
-    print("1. Each player receives a set of numbered cards.")
+    print("1. Each player receives a set of randomly numbered cards.")
     print(
         "2. The goal is to play the cards in ascending order without speaking."
     )
