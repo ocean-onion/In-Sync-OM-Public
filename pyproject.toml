@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "In_Sync_Public"
-version = "0.4.2"
+version = "0.4.3"
 description = "A cooperative card game where players attempt to play cards in ascending order without communicating."
 authors = [
     {name = "Ocean Man (ocean-onion)"}

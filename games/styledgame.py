@@ -135,6 +135,8 @@ def get_valid_player(players, played_cards=None):
             player_found = True
             return player
 
+
+
     if not player_found:
         typingprint(
             f"{RED}{BOLD}Player name not found. Please enter a valid name.{END}"
@@ -146,6 +148,23 @@ def get_valid_card(player, played_cards=None):
     wait(0.3)
     chosen_card_input = colourinput(f"{CYAN}Choose a card to play: {END}")
 
+    if chosen_card_input.lower().strip() == ".show":
+        clear()
+        colourprint(f"{BLUE}I will show your cards in 5 seconds.{END}")
+        wait(0.3)
+        colourprint(
+            f"{RED}{BOLD}Make sure all other players are looking away!{END}")
+        countdown(5)
+        clear()
+        card_list = ", ".join(
+            [f"{YELLOW}{card}{END}" for card in player["deck"]])
+        colourprint(f"{BLUE}{player['name']}'s cards:{END} {card_list}")
+        typinginput(
+            f"{DARKCYAN}Press Enter/Return when you have memorized your cards.{END}"
+        )
+        clear()
+        return get_valid_card(player, played_cards)
+        
     if not chosen_card_input.isdigit():
         typingprint(f"{RED}{BOLD}Please enter a valid card number!{END}")
         return get_valid_card(player, played_cards)

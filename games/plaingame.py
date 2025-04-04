@@ -32,7 +32,6 @@ def create_players(num_players):
                 continue
             break
 
-        print("Name cannot be empty. Please try again.")
         players.append({"name": name, "deck": []})
     return players
 
@@ -56,6 +55,7 @@ def show_cards(player):
     clear()
     print(f"{player['name']}, I will show your cards in 5 seconds.")
     print("Make sure all other players are looking away!")
+    wait(0.3)
     clear()
     print("5")
     wait(1)
@@ -125,6 +125,25 @@ def get_valid_player(players, played_cards=None):
 def get_valid_card(player, played_cards=None):
     chosen_card_input = input("Choose a card to play: ")
 
+    if chosen_card_input.lower().strip() == ".show":
+        clear()
+        print("I will show your cards in 5 seconds.")
+        print("Make sure all other players are looking away!")
+        print("5")
+        wait(1)
+        print("4")
+        wait(1)
+        print("3")
+        wait(1)
+        print("2")
+        wait(1)
+        clear()
+        card_list = ", ".join(
+            [f"{card}" for card in player["deck"]])
+        print(f"{player['name']}'s cards: {card_list}")
+        input("Press Enter/Return when you have memorized your cards.")
+        clear()
+        return get_valid_card(player, played_cards)
 
     if not chosen_card_input.isdigit():
         print("Please enter a valid card number!")
