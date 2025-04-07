@@ -38,7 +38,6 @@ pip3 install .
 
 ## Running the Game
 
-After installation, you can run the game in one of two ways:
 
 ### 4. Directly run the module:
 ```bash
